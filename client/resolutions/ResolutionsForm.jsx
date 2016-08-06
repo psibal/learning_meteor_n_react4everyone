@@ -5,14 +5,13 @@ export default class ResolutionsFrom extends Component {
      event.preventDefault();
 
      var text = this.refs.resolution.value.trim();
-     
-     Resolutions.insert({
-     	text: text,
-     	complete: false,
-     	createdAt: new Date()
+
+     // Llama al método expuesto por el servidor, con un callback para limpiar el campo.
+     Meteor.call('addResolution', text, () => {
+       this.refs.resolution.value = "";   
      });
 
-     this.refs.resolution.value = "";
+
   }
 
 
