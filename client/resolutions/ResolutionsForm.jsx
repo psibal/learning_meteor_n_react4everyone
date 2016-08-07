@@ -6,12 +6,23 @@ export default class ResolutionsFrom extends Component {
 
      var text = this.refs.resolution.value.trim();
 
-     // Llama al método expuesto por el servidor, con un callback para limpiar el campo.
-     Meteor.call('addResolution', text, () => {
-       this.refs.resolution.value = "";   
-     });
+     if(text) {
+       // Llama al método expuesto por el servidor, con un callback para limpiar el campo.
+       Meteor.call('addResolution', text, (error, data) => {
+         if (error) {
+            console.log('Please login beofre submitting');
 
-
+            /*
+            Bert.alert('Please login before submitting',
+                       'danger',
+                        'fixed-top',
+                        'fa-frown-o');
+            */
+         } else {
+            this.refs.resolution.value = "";
+         }
+       });
+     }
   }
 
 
