@@ -31,3 +31,7 @@ accounts-password
 # Para añadir notificaciones, un paquete de un amiguete del de level up
 #themeteorchef:bert
 
+# Paquete para comprobar el codigo antes de mandarlo al servidor
+check
+
+# Hay otro que se llama collect2, simple schema.
